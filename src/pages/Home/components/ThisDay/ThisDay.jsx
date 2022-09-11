@@ -7,7 +7,7 @@ export const ThisDay = () => {
     
 
     return  (
-        <header className={s.this__day}>
+        <div className={s.this__day}>
             <div className={s.top__block}>
                 <div className={s.top__block_wrapper}>
                     <div className={s.this__temp}>20°</div>
@@ -23,6 +23,6 @@ export const ThisDay = () => {
                     Город: <span>Москва</span>
                 </div>
             </div>
-        </header>
+        </div>
     );
 };
