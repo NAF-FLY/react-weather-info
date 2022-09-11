@@ -56,4 +56,40 @@
     }
 }
 
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+}
+
+.cancel,
+.tab {
+    display: flex;
+    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+    border-radius: 5px;
+    padding: 9px 20px;
+    background-color: $lite-background;
+    margin-right: 15px;
+    color: $lite-color;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cancel {
+    margin-right: 0;
+}
+
+.tab {
+    &.active {
+        background: $primary-color;
+        color: #fff;
+    }
+}
+
+.tabs__wrapper {
+    display: flex;
+}
+
 

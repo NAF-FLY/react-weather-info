@@ -1,5 +1,6 @@
 import {Card} from './Card';
 import s from './Days.module.scss';
+import { Tabs } from './Tabs';
 
 export const Days = () => {
     const days = [
@@ -62,10 +63,13 @@ export const Days = () => {
     ];
 
     return  (
-        <div className={s.days}>
-            {days.map(day => (
-                <Card day={day}/>
-            ))}
-        </div>
+        <>
+        <Tabs />
+            <div className={s.days}>
+                {days.map(day => (
+                    <Card day={day}/>
+                ))}
+            </div>
+        </>
     );
 };
