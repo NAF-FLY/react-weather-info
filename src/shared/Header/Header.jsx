@@ -15,7 +15,7 @@ const colourStyles = {
         ...styles,
         backgroundColor: 'rgba(71, 147, 255, 0.2)',
         width: '194px', 
-        heightP: '37px',
+        height: '37px',
         border: 'none',
         borderRadius: '10px',
         zIndex: 100
@@ -28,7 +28,7 @@ export const Header = () => {
     return  (
         <header className={s.header}>
             
-            <div className={s.wrapper}>
+        <div className={s.wrapper}>
                 <div className={s.logo}><GlobalSvgSelector/></div>
                 <div className={s.title}>React weather</div>
             </div>
