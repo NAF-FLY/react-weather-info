@@ -40,10 +40,10 @@
     font-size: 14px;
   }
   .indicator__name {
-    color: $base-color;
+    color: var(#{--text-color-default});
   }
   .indicator__value {
-    color: $lite-color;
+    color: var(#{--text-color-default});
   }
 }
 
