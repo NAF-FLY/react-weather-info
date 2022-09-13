@@ -6,8 +6,6 @@ export const fetchCurrentWeather =
         try {
             dispatch(currentWeatherSlice.actions.fetchCurrentWeather());
             const res = await WeatherService.getCurrentWeather(payload);
-            console.log(res);
-            if (res.status != null) return console.log("It's okey")
             if (res.status === 200) {
                 dispatch(currentWeatherSlice.actions.fetchCurrentWeatherSuccess(res));
             } else {
