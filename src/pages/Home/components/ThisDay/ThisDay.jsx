@@ -3,14 +3,14 @@ import { Sun } from '../../../../assets/icons/global/Sun';
 
 import s from './ThisDay.module.scss';
 
-export const ThisDay = () => {
-    
+export const ThisDay = ({weather}) => {
+    // const {data} = weather;
 
     return  (
         <div className={s.this__day}>
             <div className={s.top__block}>
                 <div className={s.top__block_wrapper}>
-                    <div className={s.this__temp}>20°</div>
+                    <div className={s.this__temp}>{Math.round(weather.main.temp)}</div>
                     <div className={s.this__day_name}>Сегодня</div>
                 </div>
                 <Sun />
