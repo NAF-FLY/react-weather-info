@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
+import getFormattedWeatherData from "../../services/forecastServices";
 import { selectCurrentWeatherData } from "../../store/selectors";
 import { fetchCurrentWeather } from "../../store/thunks/fetchCurrentWeather";
 import { Days } from "./components/Days/Days";
@@ -11,22 +12,41 @@ import s from './Home.module.scss';
 
 export const Home = (props) => {
 
+    const [query, setQuery] = useState({ q: "moscow" });
+    const [forecast, setForecast] = useState(null);
+
     const dispatch = useCustomDispatch();
 
     const { weather } = useCustomSelector(
         selectCurrentWeatherData);
 
     useEffect(() => {
-        dispatch(fetchCurrentWeather('moscow'));
-    });
+        const fetchWeather = async () => {
+            await getFormattedWeatherData({ ...query }).then((data) => {    
+                setForecast(data);
+            });
+        };
+        fetchWeather();
+    }, [query]);
 
-    return (
+    useEffect(() => {
+        dispatch(fetchCurrentWeather('moscow'));
+    }, []);
+
+    if (forecast !== null) {
+        console.log(forecast.daily);
+    } else {
+        console.log("Пусто")
+    }
+    
+
+    return weather.name !== undefined && forecast !== null && (
         <div className={s.home}>
             <div className={s.wrapper}>
                 <ThisDay weather={weather}/>
-                <ThisDayInfo weather={weather}/>
+                <ThisDayInfo weatherItem={weather}/>
             </div>
-            <Days />
+            <Days items={forecast.daily}/>
         </div>
     );
 };

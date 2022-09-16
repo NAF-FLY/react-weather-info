@@ -2,7 +2,6 @@ import { GlobalSvgSelector } from '../../../../assets/icons/global/GlobalSvgSele
 import s from './Days.module.scss';
 
 export const Card = ({day}) => {
-    // const {day, day_info, icon_id, temp_day, temp_night, info} = day;
 
     return  (
         <div className={s.card}>

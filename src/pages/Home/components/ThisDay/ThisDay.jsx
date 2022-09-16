@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sun } from '../../../../assets/icons/global/Sun';
+import { GlobalSvgSelector } from '../../../../assets/icons/global/GlobalSvgSelector';
 
 import s from './ThisDay.module.scss';
 
@@ -10,14 +10,15 @@ export const ThisDay = ({weather}) => {
         return x < 10 ? "0" + x : x
       }).join(":")
 
+    console.log(weather.weather[0].main);
     return  (
-        <div className={s.this__day}>
+        weather.name !== undefined && <div className={s.this__day}>
             <div className={s.top__block}>
                 <div className={s.top__block_wrapper}>
                     <div className={s.this__temp}>{Math.round(weather.main.temp)}°</div>
                     <div className={s.this__day_name}>Сегодня</div>
                 </div>
-                <Sun />
+                <GlobalSvgSelector id="Clouds"/>
             </div>
             <div className={s.bottom__block}>
                 <div className={s.this__time}>
