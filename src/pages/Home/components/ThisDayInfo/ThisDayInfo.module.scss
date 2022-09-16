@@ -13,12 +13,14 @@
 .item {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   margin-bottom: 25px;
   z-index: 1;
   &:last-of-type {
     margin-bottom: 0;
   }
+  
   .indicator,
   .indicator__name {
     margin-right: 20px;
@@ -28,6 +30,7 @@
     width: 38px;
     height: 38px;
     display: flex;
+    
     align-items: center;
     justify-content: center;
     background-color: #fff;
@@ -52,4 +55,54 @@
   width: 50%;
   top: 0;
   right: 0;
+}
+
+@media screen and (max-width : 800px) {
+  .cloud__img {
+    display: none;
+  }
+
+  .this__day_info {
+    margin-top: 20px;
+    padding: 20px;
+  }
+
+  .item {
+    .indicator {
+        width: 30px;
+        height: 30px;
+      }
+
+      .indicator__value {
+        position: absolute;
+        width: 50%;
+        right: 0;
+    }
+  }
+  
+}
+
+@media screen and (max-width : 1280px) {
+  .cloud__img {
+    display: none;
+  }
+
+  .this__day_info {
+    margin-top: 20px;
+    padding: 20px;
+  }
+
+  .item {
+    .indicator {
+        width: 30px;
+        height: 30px;
+      }
+
+      .indicator__value {
+        position: absolute;
+        width: 50%;
+        right: 0;
+    }
+  }
+  
 }

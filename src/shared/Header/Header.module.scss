@@ -31,3 +31,13 @@
   font-size: 25px;
   color: $primary-color;
 }
+
+@media screen and (max-width : 800px) {
+  .title {
+    display:none;
+  }
+
+  .header {
+    width: min(100%, 1000px)
+  }
+}

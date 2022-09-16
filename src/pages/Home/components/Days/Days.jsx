@@ -69,6 +69,14 @@ export const Days = ({items}) => {
             temp_night: `+${Math.round(items[6].temp.min)}`,
             info: items[6].weather[0].description.firstLetterToUppercase(),
         },
+        {
+            day: "Удачного тебе дня :)",
+            day_info: "",
+            icon_id: "Cool",
+            temp_day: "+26",
+            temp_night: "+20",
+            info: "Прекрасно",
+        },
     ];
 
     return  (

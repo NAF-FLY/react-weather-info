@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   width: 100%;
   background-color: var(#{--components-background-default});
   box-shadow: $box-shadow;
@@ -17,6 +17,7 @@
   background-color: var(#{--card-background-default});
   border-radius: 10px;
   padding: 10px;
+  margin-bottom: 20px;
   width: 149px;
   transition: 0.3s;
   cursor: pointer;
@@ -91,4 +92,10 @@
 
 .tabs__wrapper {
   display: flex;
+}
+
+@media screen and (max-width : 400px) {
+  .card {
+    width: 140px
+  }
 }

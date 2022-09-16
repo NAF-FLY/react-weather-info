@@ -6,12 +6,6 @@ export const Tabs = () => {
         {
           value: 'На неделю',
         },
-        {
-          value: 'На 10 дней',
-        },
-        {
-          value: 'На месяц',
-        },
       ];
     return  (
         <div className={s.tabs}>
