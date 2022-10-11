@@ -6,47 +6,41 @@ import { selectCurrentWeatherData } from "../../store/selectors";
 import { fetchCurrentWeather } from "../../store/thunks/fetchCurrentWeather";
 import { Days } from "./components/Days/Days";
 import { ThisDay } from "./components/ThisDay/ThisDay";
-import {ThisDayInfo} from './components/ThisDayInfo/ThisDayInfo';
+import { ThisDayInfo } from "./components/ThisDayInfo/ThisDayInfo";
 
-import s from './Home.module.scss';
+import s from "./Home.module.scss";
 
 export const Home = (props) => {
+  const [query, setQuery] = useState({ q: "Москва" });
+  const [forecast, setForecast] = useState(null);
 
-    const [query, setQuery] = useState({ q: "moscow" });
-    const [forecast, setForecast] = useState(null);
+  const dispatch = useCustomDispatch();
 
-    const dispatch = useCustomDispatch();
+  const { weather } = useCustomSelector(selectCurrentWeatherData);
 
-    const { weather } = useCustomSelector(
-        selectCurrentWeatherData);
+  useEffect(() => {
+    const fetchWeather = async () => {
+      await getFormattedWeatherData({ ...query }).then((data) => {
+        setForecast(data);
+      });
+    };
+    fetchWeather();
+  }, [query]);
 
-    useEffect(() => {
-        const fetchWeather = async () => {
-            await getFormattedWeatherData({ ...query }).then((data) => {    
-                setForecast(data);
-            });
-        };
-        fetchWeather();
-    }, [query]);
+  useEffect(() => {
+    dispatch(fetchCurrentWeather("Москва"));
+  }, []);
 
-    useEffect(() => {
-        dispatch(fetchCurrentWeather('moscow'));
-    }, []);
-
-    if (forecast !== null) {
-        console.log(forecast.daily);
-    } else {
-        console.log("Пусто")
-    }
-    
-
-    return weather.name !== undefined && forecast !== null && (
-        <div className={s.home}>
-            <div className={s.wrapper}>
-                <ThisDay weather={weather}/>
-                <ThisDayInfo weatherItem={weather}/>
-            </div>
-            <Days items={forecast.daily}/>
+  return (
+    weather.name !== undefined &&
+    forecast !== null && (
+      <div className={s.home}>
+        <div className={s.wrapper}>
+          <ThisDay weather={weather} />
+          <ThisDayInfo weatherItem={weather} />
         </div>
-    );
+        <Days items={forecast.daily} />
+      </div>
+    )
+  );
 };

@@ -7,11 +7,16 @@ import s from './Header.module.scss';
 
 export const Header = () => {
     const options = [
-        { value: 'city-1', label: 'Москва' },
-        { value: 'city-2', label: 'Красногорск' },
+      { value: "city-1", label: "Москва" },
+      { value: "city-2", label: "Красногорск" },
+      { value: "city-2", label: "Ярославль" },
+      { value: "city-2", label: "Санкт-Петербург" },
+      { value: "city-2", label: "Владимир" },
+      { value: "city-2", label: "Мурманск" },
     ];
     
     const [theme, setTheme] = useState('light');
+    const [city, setCity] = useState(null);
 
     const colourStyles = {
         control: (styles) => ({

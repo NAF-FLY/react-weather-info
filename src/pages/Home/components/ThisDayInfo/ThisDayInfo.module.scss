@@ -68,9 +68,14 @@
   }
 
   .item {
-    .indicator {
-        width: 30px;
-        height: 30px;
+      .indicator {
+          width: 30px;
+          height: 30px;
+        }
+
+      .indicator__name,
+      .indicator__value {
+        font-size: 12px;
       }
 
       .indicator__value {
