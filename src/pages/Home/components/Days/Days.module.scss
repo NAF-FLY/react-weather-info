@@ -1,4 +1,4 @@
-@import '../../../../styles/variables.scss';
+@import "../../../../styles/variables.scss";
 
 .days {
   display: flex;
@@ -84,7 +84,7 @@
 }
 
 .tab {
-  &.active {
+  &:hover {
     background: $primary-color;
     color: #fff;
   }
@@ -94,7 +94,7 @@
   display: flex;
 }
 
-@media screen and (max-width : 400px) {
+@media screen and (max-width: 400px) {
   .card {
     width: 135px;
     margin-bottom: 15px;

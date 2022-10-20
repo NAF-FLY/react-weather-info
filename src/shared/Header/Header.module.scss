@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 .header {
   display: flex;
   align-items: center;
@@ -32,12 +32,12 @@
   color: $primary-color;
 }
 
-@media screen and (max-width : 800px) {
+@media screen and (max-width: 800px) {
   .title {
-    display:none;
+    display: none;
   }
 
   .header {
-    width: min(100%, 1000px)
+    width: min(100%, 1000px);
   }
 }

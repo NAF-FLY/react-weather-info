@@ -1,35 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
-import { useCustomDispatch, useCustomSelector } from "../../hooks/store";
+import { useCustomSelector } from "../../hooks/store";
 import getFormattedWeatherData from "../../services/forecastServices";
 import { selectCurrentWeatherData } from "../../store/selectors";
-import { fetchCurrentWeather } from "../../store/thunks/fetchCurrentWeather";
 import { Days } from "./components/Days/Days";
 import { ThisDay } from "./components/ThisDay/ThisDay";
 import { ThisDayInfo } from "./components/ThisDayInfo/ThisDayInfo";
 
 import s from "./Home.module.scss";
 
-export const Home = (props) => {
-  const [query, setQuery] = useState({ q: "Москва" });
-  const [forecast, setForecast] = useState(null);
-
-  const dispatch = useCustomDispatch();
-
+export const Home = ({
+  city,
+  setClick,
+  forecast,
+  setForecast,
+  setCardInfo,
+}) => {
   const { weather } = useCustomSelector(selectCurrentWeatherData);
 
   useEffect(() => {
     const fetchWeather = async () => {
-      await getFormattedWeatherData({ ...query }).then((data) => {
+      await getFormattedWeatherData({ ...city }).then((data) => {
         setForecast(data);
       });
     };
     fetchWeather();
-  }, [query]);
-
-  useEffect(() => {
-    dispatch(fetchCurrentWeather("Москва"));
-  }, []);
+  }, [city]);
 
   return (
     weather.name !== undefined &&
@@ -39,7 +35,11 @@ export const Home = (props) => {
           <ThisDay weather={weather} />
           <ThisDayInfo weatherItem={weather} />
         </div>
-        <Days items={forecast.daily} />
+        <Days
+          items={forecast.daily}
+          setClick={setClick}
+          setCardInfo={setCardInfo}
+        />
       </div>
     )
   );
